@@ -8,6 +8,7 @@ app.use(express.json());
 app.use("/users", userRoutes);
 app.use("/arts",userRoutes);
 app.use("/votes",userRoutes);
+app.use("/competitions",userRoutes);
 
 app.listen(3000, () => {
     console.log("Server running on port 3000");
