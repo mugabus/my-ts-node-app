@@ -3,7 +3,7 @@ import { Art } from "../models/Art";
 
 
 export function addArt(art:Art):void{
-   let exist =arts.some((art)=>art.id=art.id);
+   let exist =arts.some((art)=>art.id===art.id);
    if(exist){
       console.log("this user exits already");
    } 
