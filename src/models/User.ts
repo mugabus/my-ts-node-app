@@ -7,9 +7,9 @@ export enum UserType {
 }
 
 export interface User{
-    id:number,
-    name:string,
-    email:string,
-    image:string,
+    id:number;
+    name:string;
+    email:string;
+    image:string;
     category:UserType
 }

@@ -1,12 +1,9 @@
 import { votes } from "../database/vote.storage";
 import { Vote } from "../models/Vote";
+import { canVote } from "./competition.service";
 
 // Create a vote
-export function addVote(
-    userId: number,
-    artworkId: number
-): Vote | null {
-
+export function addVote(    userId: number,artworkId: number): Vote | null {
     // Check if the user already voted for this artwork
     const alreadyVoted = votes.some(
         vote =>
@@ -18,7 +15,10 @@ export function addVote(
         console.log("User has already voted for this artwork");
         return null;
     }
-
+    if(!canVote(artworkId)){
+        console.log("voting for this competition is cloded");
+        return null;
+    }
     const vote: Vote = {
         id: votes.length + 1,
         userId,
@@ -48,21 +48,21 @@ export function getVoteById(
 
 // Get all votes for an artwork
 export function getVotesByArt(
-    artId: number
+    artworkId: number
 ): Vote[] {
 
     return votes.filter(
-        vote => vote.artworkId === artId
+        vote => vote.artworkId === artworkId
     );
 }
 
 // Count votes for an artwork
 export function getVoteCountForArt(
-    artId: number
+    artworkId: number
 ): number {
 
     return votes.filter(
-        vote => vote.artworkId === artId
+        vote => vote.artworkId === artworkId
     ).length;
 }
 
