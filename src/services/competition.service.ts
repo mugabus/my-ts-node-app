@@ -4,7 +4,7 @@ import {competitions} from "../database/competition.storage"
 
 
 
-export function addCompetion(competition:Competition):Competition |null{
+export function addCompetition(competition:Competition):Competition |null{
     let exist= competitions.some((competition)=>competition.id===competition.id);
     if(exist){
         console.log("competition exist already");
