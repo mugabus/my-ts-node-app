@@ -1,3 +1,3 @@
 import { Vote } from "../models/Vote";
 
-export let votes:Vote []=[];
+export const votes:Vote []=[];
